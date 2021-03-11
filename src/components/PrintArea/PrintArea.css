@@ -1,0 +1,35 @@
+.printer {
+    margin-top: -4%;
+}
+
+.monitor {
+    margin-top: -5%;
+}
+
+.printerText {
+
+    z-index: 5;
+    margin-left: -56%;
+    width: 50%;
+    resize: none;
+    height: 83px;
+    position: absolute;
+}
+
+.monitorText {
+    z-index: 5;
+    flex: auto;
+    margin-left: -48%;
+    margin-top: 21%;
+    width: 33%;
+    height: 59px;
+    position: absolute;
+    resize: none;
+}
+
+.stateLabel{
+    margin-left: -47%;
+    margin-top: 12%;
+    position: absolute; 
+    font-size: 1.3em;
+}
