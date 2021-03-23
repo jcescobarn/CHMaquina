@@ -1,5 +1,6 @@
+import React from 'react'
 
-const CollectorTable = () => (
+const CollectorTable: React.FC<{}> = () => (
     <table className="table table-hover col-md-5">
         <thead>
             <tr>

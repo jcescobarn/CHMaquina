@@ -1,6 +1,7 @@
+import React from 'react'
 import './VarTable.css'
 
-const VarTable = () => (
+const VarTable: React.FC<{}> = () => (
     <table className="table table-hover">
         <thead>
             <tr>

@@ -1,6 +1,6 @@
+import React from 'react'
 
-
-const QueueTable = () => (
+const QueueTable: React.FC<{}> = () => (
     <table className="table table-hover">
         <thead>
             <tr>

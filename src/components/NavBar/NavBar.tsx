@@ -1,8 +1,9 @@
+import React from 'react'
 import './NavBar.css'
 
 
 
-const NavBar = () =>
+const NavBar: React.FC<{}> = () =>
 (
 <nav className="navbar navbar-dark bg-dark">
  <label className="chlabel">CH Machine</label> 
@@ -10,6 +11,7 @@ const NavBar = () =>
  <label className="chlabel">V 1.0</label>
 </div>
 </nav>
+
 );
 
 

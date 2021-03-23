@@ -1,6 +1,7 @@
 import './LabelTable.css'
+import React from 'react'
 
-const LabelTable = () =>( 
+const LabelTable: React.FC<{}> = () =>( 
     <table className="table table-hover">
         <thead>
             <tr>

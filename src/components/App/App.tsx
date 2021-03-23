@@ -1,7 +1,6 @@
 import './App.css';
 import OSMemorySpace from '../OSMemorySpace/OSMemorySpace'
 import MemorySpace from '../MemorySpace/MemorySpace'
-import UploadFile from '../UploadFile/UploadFile'
 import CodeTextArea from '../CodeTextArea/CodeTextArea';
 import PrintArea from '../PrintArea/PrintArea';
 import VarTable from '../VarTable/VarTable';
@@ -26,9 +25,7 @@ const App = () => (
             <MemorySpace />
           </div>
         </div>
-        <UploadFile />
         <CodeTextArea />
-        <button type="button" className="btn-sm w-75 button-color offset-md-1">Agregar a Cola</button>
       </div>
       <div className="col-md-5">
         <PrintArea />

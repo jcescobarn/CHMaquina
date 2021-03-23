@@ -1,5 +1,6 @@
+import React from 'react'
 
-const CurrentInstructionTable = () => (
+const CurrentInstructionTable: React.FC<{}> = () => (
     <table className="table table-hover col-md-12">
         <thead>
             <tr>
