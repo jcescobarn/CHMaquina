@@ -1,9 +1,8 @@
-import { sintaxObject } from '../types' // se importa el archivo con los tipos de datos definidos
 
 // funcion que revisa la sintaxis de la instruccion Cargue
 // todas las salidas estan tipadas con sintaxObject, un tipo de dato definido en el archivo types.tsx
-const checkCargue = (instruction: string[], instruction_line: number): sintaxObject => {// como parametros recibe la instruccion dividida en un array y el numero de linea
-    const state: sintaxObject = {
+const checkCargue = (instruction, instruction_line) => {// como parametros recibe la instruccion dividida en un array y el numero de linea
+    const state = {
         sintax_state: oneArgumentFunctions(instruction), // se utiliza la funcion para revisar que tiene un solo argumento  y es una variable
         description: "",
         line: instruction_line
@@ -12,8 +11,8 @@ const checkCargue = (instruction: string[], instruction_line: number): sintaxObj
 }
 
 //funcion que revisa la sintaxis de la instruccion Almacene
-const checkAlmacene = (instruction: string[], instruction_line: number): sintaxObject => {// como parametros recibe la instruccion dividida en un array y el numero de linea
-    const state: sintaxObject = {
+const checkAlmacene = (instruction, instruction_line) => {// como parametros recibe la instruccion dividida en un array y el numero de linea
+    const state = {
         sintax_state: oneArgumentFunctions(instruction), // se utiliza la funcion para revisar que tiene un solo argumento  y es una variable
         description: "",
         line: instruction_line
@@ -22,8 +21,8 @@ const checkAlmacene = (instruction: string[], instruction_line: number): sintaxO
 }
 
 //funcion que revisa la sintaxis de la instruccion Nueva
-const checkNueva = (instruction: string[], instruction_line: number): sintaxObject => { // como parametros recibe la instruccion dividida en un array y el numero de linea
-    const state: sintaxObject = { // se inicializa la variable con la respuesta
+const checkNueva = (instruction, instruction_line) => { // como parametros recibe la instruccion dividida en un array y el numero de linea
+    const state = { // se inicializa la variable con la respuesta
         sintax_state: false,
         description: "",
         line: instruction_line
@@ -94,8 +93,8 @@ const checkNueva = (instruction: string[], instruction_line: number): sintaxObje
 }
 
 // funcion que verifica la sintaxis de la instruccion lea
-const checkLea = (instruction: string[], instruction_line: number): sintaxObject => { // como parametros recibe la instruccion dividida en un array y el numero de linea
-    const state: sintaxObject = {
+const checkLea = (instruction, instruction_line) => { // como parametros recibe la instruccion dividida en un array y el numero de linea
+    const state = {
         sintax_state: oneArgumentFunctions(instruction), // se utiliza la funcion para revisar que tiene un solo argumento  y es una variable
         description: "",
         line: instruction_line
@@ -104,8 +103,8 @@ const checkLea = (instruction: string[], instruction_line: number): sintaxObject
 
 }
 //funcion que verifica la sintaxis de la instruccion Sume
-const checkSume = (instruction: string[], instruction_line: number): sintaxObject => { // como parametros recibe la instruccion dividida en un array y el numero de linea
-    const state: sintaxObject = {
+const checkSume = (instruction, instruction_line) => { // como parametros recibe la instruccion dividida en un array y el numero de linea
+    const state = {
         sintax_state: oneArgumentFunctions(instruction), // se utiliza la funcion para revisar que tiene un solo argumento  y es una variable
         description: "",
         line: instruction_line
@@ -114,8 +113,8 @@ const checkSume = (instruction: string[], instruction_line: number): sintaxObjec
 }
 
 //funcion verifica la sintaxis de la instruccion Reste
-const checkReste = (instruction: string[], instruction_line: number): sintaxObject => {// como parametros recibe la instruccion dividida en un array y el numero de linea
-    const state: sintaxObject = {
+const checkReste = (instruction, instruction_line) => {// como parametros recibe la instruccion dividida en un array y el numero de linea
+    const state = {
         sintax_state: oneArgumentFunctions(instruction), // se utiliza la funcion para revisar que tiene un solo argumento  y es una variable
         description: "",
         line: instruction_line
@@ -123,8 +122,8 @@ const checkReste = (instruction: string[], instruction_line: number): sintaxObje
     return state;
 }
 // funcion que verifica la sintaxis  de la instruccion Multiplique
-const checkMultiplique = (instruction: string[], instruction_line: number): sintaxObject => {// como parametros recibe la instruccion dividida en un array y el numero de linea
-    const state: sintaxObject = {
+const checkMultiplique = (instruction, instruction_line) => {// como parametros recibe la instruccion dividida en un array y el numero de linea
+    const state = {
         sintax_state: oneArgumentFunctions(instruction),// se utiliza la funcion para revisar que tiene un solo argumento  y es una variable
         description: "",
         line: instruction_line
@@ -134,8 +133,8 @@ const checkMultiplique = (instruction: string[], instruction_line: number): sint
 }
 
 //funcion que verifica la sintaxis de la instruccion Divida
-const checkDivida = (instruction: string[], instruction_line: number): sintaxObject => {// como parametros recibe la instruccion dividida en un array y el numero de linea
-    const state: sintaxObject = {
+const checkDivida = (instruction, instruction_line) => {// como parametros recibe la instruccion dividida en un array y el numero de linea
+    const state = {
         sintax_state: oneArgumentFunctions(instruction),// se utiliza la funcion para revisar que tiene un solo argumento  y es una variable
         description: "",
         line: instruction_line
@@ -145,9 +144,9 @@ const checkDivida = (instruction: string[], instruction_line: number): sintaxObj
 }
 
 //funcion que verifica la sintaxis de la instruccion potencia
-const checkPotencia = (instruction: string[], instruction_line: number): sintaxObject => {// como parametros recibe la instruccion dividida en un array y el numero de linea
+const checkPotencia = (instruction, instruction_line) => {// como parametros recibe la instruccion dividida en un array y el numero de linea
 
-    const state: sintaxObject = {
+    const state = {
         sintax_state: oneArgumentFunctions(instruction),// se utiliza la funcion para revisar que tiene un solo argumento  y es una variable
         description: "",
         line: instruction_line
@@ -156,9 +155,9 @@ const checkPotencia = (instruction: string[], instruction_line: number): sintaxO
 }
 
 // funcion que verifica la sintaxis de la instruccion Modulo
-const checkModulo = (instruction: string[], instruction_line: number): sintaxObject => {// como parametros recibe la instruccion dividida en un array y el numero de linea
+const checkModulo = (instruction, instruction_line) => {// como parametros recibe la instruccion dividida en un array y el numero de linea
 
-    const state: sintaxObject = {
+    const state = {
         sintax_state: oneArgumentFunctions(instruction),// se utiliza la funcion para revisar que tiene un solo argumento  y es una variable
         description: "",
         line: instruction_line
@@ -167,9 +166,9 @@ const checkModulo = (instruction: string[], instruction_line: number): sintaxObj
 }
 
 // funcion que verifica la sintaxis de  la instruccion Concatener
-const checkConcatene = (instruction: string[], instruction_line: number): sintaxObject => {// como parametros recibe la instruccion dividida en un array y el numero de linea
+const checkConcatene = (instruction, instruction_line) => {// como parametros recibe la instruccion dividida en un array y el numero de linea
 
-    const state: sintaxObject = {
+    const state = {
         sintax_state: oneArgumentFunctions(instruction),// se utiliza la funcion para revisar que tiene un solo argumento  y es una variable
         description: "",
         line: instruction_line
@@ -178,8 +177,8 @@ const checkConcatene = (instruction: string[], instruction_line: number): sintax
 }
 
 //funcion que verifica la sintaxis de la instruccion elimine
-const checkElimine = (instruction: string[], instruction_line: number): sintaxObject => {// como parametros recibe la instruccion dividida en un array y el numero de linea
-    const state: sintaxObject = {
+const checkElimine = (instruction, instruction_line) => {// como parametros recibe la instruccion dividida en un array y el numero de linea
+    const state = {
         sintax_state: oneArgumentFunctions(instruction),// se utiliza la funcion para revisar que tiene un solo argumento  y es una variable
         description: "",
         line: instruction_line
@@ -187,9 +186,9 @@ const checkElimine = (instruction: string[], instruction_line: number): sintaxOb
     return state;
 }
 
-const checkExtraiga = (instruction: string[], instruction_line: number): sintaxObject => {// como parametros recibe la instruccion dividida en un array y el numero de linea
+const checkExtraiga = (instruction, instruction_line) => {// como parametros recibe la instruccion dividida en un array y el numero de linea
 
-    const state: sintaxObject = {
+    const state = {
         sintax_state: oneArgumentFunctions(instruction),// se utiliza la funcion para revisar que tiene un solo argumento  y es una variable
         description: "",
         line: instruction_line
@@ -197,8 +196,8 @@ const checkExtraiga = (instruction: string[], instruction_line: number): sintaxO
     return state;
 }
 
-const checkY = (instruction: string[], instruction_line: number): sintaxObject => {// como parametros recibe la instruccion dividida en un array y el numero de linea
-    const state: sintaxObject = {
+const checkY = (instruction, instruction_line) => {// como parametros recibe la instruccion dividida en un array y el numero de linea
+    const state = {
         sintax_state: false,
         description: "",
         line: instruction_line
@@ -216,8 +215,8 @@ const checkY = (instruction: string[], instruction_line: number): sintaxObject =
     return state;
 }
 
-const checkO = (instruction: string[], instruction_line: number): sintaxObject => {// como parametros recibe la instruccion dividida en un array y el numero de linea
-    const state: sintaxObject = {
+const checkO = (instruction, instruction_line) => {// como parametros recibe la instruccion dividida en un array y el numero de linea
+    const state = {
         sintax_state: false,
         description: "",
         line: instruction_line
@@ -235,8 +234,8 @@ const checkO = (instruction: string[], instruction_line: number): sintaxObject =
     return state;
 }
 
-const checkNO = (instruction: string[], instruction_line: number): sintaxObject => {// como parametros recibe la instruccion dividida en un array y el numero de linea
-    const state: sintaxObject = {
+const checkNO = (instruction, instruction_line) => {// como parametros recibe la instruccion dividida en un array y el numero de linea
+    const state = {
         sintax_state: false,
         description: "",
         line: instruction_line
@@ -254,9 +253,9 @@ const checkNO = (instruction: string[], instruction_line: number): sintaxObject 
     return state;
 }
 
-const checkMuestre = (instruction: string[], instruction_line: number): sintaxObject => {// como parametros recibe la instruccion dividida en un array y el numero de linea
+const checkMuestre = (instruction, instruction_line) => {// como parametros recibe la instruccion dividida en un array y el numero de linea
 
-    const state: sintaxObject = {
+    const state = {
         sintax_state: oneArgumentFunctions(instruction),// se utiliza la funcion para revisar que tiene un solo argumento  y es una variable
         description: "",
         line: instruction_line
@@ -264,8 +263,8 @@ const checkMuestre = (instruction: string[], instruction_line: number): sintaxOb
     return state;
 }
 
-const checkImprima = (instruction: string[], instruction_line: number): sintaxObject => {// como parametros recibe la instruccion dividida en un array y el numero de linea
-    const state: sintaxObject = {
+const checkImprima = (instruction, instruction_line) => {// como parametros recibe la instruccion dividida en un array y el numero de linea
+    const state = {
         sintax_state: oneArgumentFunctions(instruction),// se utiliza la funcion para revisar que tiene un solo argumento  y es una variable
         description: "",
         line: instruction_line
@@ -273,8 +272,8 @@ const checkImprima = (instruction: string[], instruction_line: number): sintaxOb
     return state;
 }
 
-const checkVaya = (instruction: string[], instruction_line: number): sintaxObject => {// como parametros recibe la instruccion dividida en un array y el numero de linea
-    const state: sintaxObject = {
+const checkVaya = (instruction, instruction_line) => {// como parametros recibe la instruccion dividida en un array y el numero de linea
+    const state = {
         sintax_state: oneArgumentFunctions(instruction),// se utiliza la funcion para revisar que tiene un solo argumento  y es una variable
         description: "",
         line: instruction_line
@@ -282,8 +281,8 @@ const checkVaya = (instruction: string[], instruction_line: number): sintaxObjec
     return state;
 }
 
-const checkVayasi = (instruction: string[], instruction_line: number): sintaxObject => {// como parametros recibe la instruccion dividida en un array y el numero de linea
-    const state: sintaxObject = {
+const checkVayasi = (instruction, instruction_line) => {// como parametros recibe la instruccion dividida en un array y el numero de linea
+    const state = {
         sintax_state: false,
         description: "",
         line: instruction_line
@@ -300,8 +299,8 @@ const checkVayasi = (instruction: string[], instruction_line: number): sintaxObj
     return state;
 }
 
-const checkEtiqueta = (instruction: string[], instruction_line: number): sintaxObject => {// como parametros recibe la instruccion dividida en un array y el numero de linea
-    const state: sintaxObject = {
+const checkEtiqueta = (instruction, instruction_line) => {// como parametros recibe la instruccion dividida en un array y el numero de linea
+    const state = {
         sintax_state: false,
         description: "",
         line: instruction_line
@@ -318,8 +317,8 @@ const checkEtiqueta = (instruction: string[], instruction_line: number): sintaxO
     return state;
 }
 
-const checkRetorne = (instruction: string[], instruction_line: number): sintaxObject => {// como parametros recibe la instruccion dividida en un array y el numero de linea
-    const state: sintaxObject = {
+const checkRetorne = (instruction, instruction_line) => {// como parametros recibe la instruccion dividida en un array y el numero de linea
+    const state = {
         sintax_state: false,
         description: "",
         line: instruction_line
@@ -334,7 +333,7 @@ const checkRetorne = (instruction: string[], instruction_line: number): sintaxOb
 }
 
 // chequeo de sintaxis para las funciones con una variable como único argumento 
-const oneArgumentFunctions = (instruction: string[]): Boolean => {
+const oneArgumentFunctions = (instruction) => {
     if (instruction.length === 2) {
         return (isVariable(instruction[1]))
     } else {
@@ -343,16 +342,16 @@ const oneArgumentFunctions = (instruction: string[]): Boolean => {
 }
 
 // se evalua que el texto cumpla con las condiciones de ser una variable declaradas en el documento
-const isVariable = (variable: string): Boolean => {
+const isVariable = (variable)=> {
     const descomposed = variable.split('')
     const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     return (typeof descomposed[0] === 'string' && !digits.includes(descomposed[0])) // se evalua que el primer caracter del nombre no sea un numero
 }
 
 
-const checkInstructionSintax = (instruction: String, instruction_line: number): sintaxObject => {// como parametros recibe la instruccion en un string y el numero de linea
+const checkInstructionSintax = (instruction, instruction_line) => {// como parametros recibe la instruccion en un string y el numero de linea
     const descomposed_instruction = instruction.split(" "); // se descompone la instruccion en un arreglo
-    let sintax_state: sintaxObject; // se declara la variable que va a contener el resultdao
+    let sintax_state; // se declara la variable que va a contener el resultdao
     switch (descomposed_instruction[0]) { // se utiliza un switch para saber cual es la instruccion y utilizar la funcion que verifica la sintaxis
         case "cargue":
             sintax_state = checkCargue(descomposed_instruction, instruction_line);
