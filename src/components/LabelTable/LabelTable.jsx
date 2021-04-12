@@ -12,17 +12,15 @@ class LabelTable extends React.Component {
                 <thead>
                     <tr>
                         <th scope="col">Posición</th>
-                        <th scope="col">Etiqueta</th>
-                        <th scope="col">Valor</th>
+                        <th scope="col">Etiqueta</th>                       
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        this.props.labelsData.map((labelData) => {
-                            return (<tr>
+                        this.props.labelsData.map((labelData,index) => {
+                            return (<tr key={index}>
                                 <td>{labelData.memoryPos}</td>
                                 <td>{labelData.name}</td>
-                                <td>{labelData.value}</td>
                             </tr>)
                         })
                     }

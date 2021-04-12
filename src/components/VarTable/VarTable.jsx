@@ -18,8 +18,8 @@ class VarTable extends React.Component {
                 </thead>
                 <tbody>
                     {
-                        this.props.varsData.map((dataVar) => {
-                            return (<tr>
+                        this.props.varsData.map((dataVar,index) => {
+                            return (<tr key={index}>
                                 <td>{dataVar.memoryPos}</td>
                                 <td>{dataVar.name}</td>
                                 <td>{dataVar.value}</td>

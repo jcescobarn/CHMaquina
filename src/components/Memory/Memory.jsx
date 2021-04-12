@@ -1,7 +1,6 @@
 import './Memory.css' // se importa la hoja de estilos del componente
 import React from 'react' // se importa la libreria de react para tipar el componente
-
-
+import { connect } from 'react-redux'
 
 
 class Memory extends React.Component {
@@ -9,6 +8,13 @@ class Memory extends React.Component {
         super(props)
     }
     render() {
+        const array_data = this.props.memoryData.slice()
+        console.log(this.props.memorySize )
+        if(array_data.length < this.props.memorySize){
+            for(let i = array_data.length; i < this.props.memorySize;i++){
+                array_data.push('')
+            }
+        }
 
         return ( // se declara el componente
             <div className="table-wrapper-scroll-y my-custom-scrollbar">
@@ -23,10 +29,10 @@ class Memory extends React.Component {
                     <tbody>
                         {
                             // se recorren las instrucciones guardadas en la memoria dentro del store para generar la tabla
-                            this.props.memoryData.map((instruction, index) => {
+                            array_data.map((instruction, index) => {
 
                                 return (
-                                    <tr>
+                                    <tr key={index}>
                                         <td>1</td>
                                         <td>{index}</td>
                                         <td>{instruction}</td>
@@ -41,4 +47,18 @@ class Memory extends React.Component {
     }
 }
 
-export default Memory // se exporta el componente
+const mapStateToProps = (state) => {
+    return {
+
+    memorySize: state.systemMemory.memory_size,
+    }
+}
+
+const mapDispatchToProps = (distpatch) => {
+    return {
+
+    }
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Memory) // se exporta el componente

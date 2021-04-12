@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import './CollectorTable'
 
 class CollectorTable extends React.Component {
 
     render() {
         return (
-            <table className="table table-hover col-md-5">
+            <table className="table table-hover col-md-5 collectorTable">
                 <thead>
                     <tr>
                         <th>Acumulador</th>

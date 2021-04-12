@@ -7,9 +7,16 @@ export const ADD_VARIABLE = 'ADD_VARIABLE'
 export const REMOVE_VARIABLE = 'REMOVE_VARIABLE'
 export const TOOGLE_SYSTEM_STATE = 'TOGGLE_SYSTEM_STATE'
 export const ADD_LABEL = 'ADD_LABEL'
-export const  REMOVE_LABEL = 'REMOVE_LABEL'
+export const REMOVE_LABEL = 'REMOVE_LABEL'
 export const ADD_PROCESS = 'ADD_PROCESS'
 export const REMOVE_PROCESS = 'REMOVE_PROCESS'
+export const ADD_OS_MEMORY_SPACE = 'ADD_OS_MEMORY_SPACE'
+export const REMOVE_OS_MEMORY_SPACE = 'REMOVE_OS_MEMORY_SPACE'
+export const TOOGLE_MEMORY_EDIT = 'TOOGLE_MEMORY_EDIT'
+export const SET_ACUMULADOR = 'SET_ACUMULADOR'
+export const SET_VARIABLE = 'SET_VARIABLE'
+export const ADD_PRINTER_DATA = 'ADD_PRINTER_DATA'
+export const ADD_MONITOR_DATA = 'ADD_MONITOR_DATA'
 
 
 export function setMemorysize(number) { // se declara una función que devuelve una accion sobre el estado de la aplicacion
@@ -28,12 +35,14 @@ export function setRemoveInstruction(number) {
     return { type: REMOVE_INSTRUCTION, payload: number }
 }
 
-export function addVariable(name, value, memoryPos) {
+export function addVariable(name, value, memoryPos, type,file) {
     return {
         type: ADD_VARIABLE, payload: {
             name,
             value,
-            memoryPos
+            memoryPos,
+            type,
+            file
         }
     }
 }
@@ -42,31 +51,66 @@ export function removeVariable(memoryPos) {
     return { type: REMOVE_VARIABLE, payload: memoryPos }
 }
 
-export function  toogleSystemState(){
-    return {type: TOOGLE_SYSTEM_STATE}
+export function toogleSystemState() {
+    return { type: TOOGLE_SYSTEM_STATE }
 }
 
-export function addLabel(name, value, memoryPos){
-return {
+export function addLabel(name, line, memoryPos,file) {
+    return {
         type: ADD_LABEL, payload: {
             name,
-            value,
-            memoryPos
+            line,
+            memoryPos,
+            file
         }
     }
 }
 
-export function removeLabel(memoryPos){
-    return {type:REMOVE_LABEL, payload:memoryPos}
+export function removeLabel(memoryPos) {
+    return { type: REMOVE_LABEL, payload: memoryPos }
 }
 
-export function addProcess(id,name){
-    return {type: ADD_PROCESS, payload:{
-        id,
-        name
-    }}
+export function addProcess(id, name) {
+    return {
+        type: ADD_PROCESS, payload: {
+            id,
+            name
+        }
+    }
 }
 
-export function removeProcess(memoryPos){
-    return {type:REMOVE_PROCESS, payload: memoryPos}
+export function removeProcess(memoryPos) {
+    return { type: REMOVE_PROCESS, payload: memoryPos }
 }
+
+export function addOSMemorySpace() {
+    return { type: ADD_OS_MEMORY_SPACE }
+}
+
+export function removeOSMemorySpace() {
+    return { type: REMOVE_OS_MEMORY_SPACE }
+}
+
+export function toogleMemoryEdit() {
+    return { type: TOOGLE_MEMORY_EDIT }
+}
+
+export function setAcumulador(value) {
+    return { type: SET_ACUMULADOR, payload: value }
+}
+
+export function setVariable(variable, value){
+    return {type:SET_VARIABLE, payload:{
+        name: variable,
+        value
+    } }
+}
+
+export function addPrinterData(data){
+    return {type: ADD_PRINTER_DATA, payload: data}
+}
+
+export function addMonitorData(data){
+    return {type: ADD_MONITOR_DATA, payload:data}
+}
+
