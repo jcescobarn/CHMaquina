@@ -39,6 +39,7 @@ class CodeTextArea extends React.Component {
   checkSintax = () => { // se declara la funcion que revisa la sintaxis y carga a la memoria principaljj
     const instructions = this.textAreaRef.current.value.split('\n'); // se extrae el codigo almacenado en el text area y se divide en un arreglo por instrucciones
     let code_state = []; // se declara un array donde se almacenaran los resultados de las evaluaciones de sintaxis de las instrucciones
+    let init_line = this.props.memory.length
     let errors = [];// se declara un array para almacenar los errores de sintaxis 
     let variables = []; // se declara un array para almacenar las variables contenidas en el código
     let labels = []; // se declara un array para almacenar las variables contenidas en el código
@@ -83,17 +84,17 @@ class CodeTextArea extends React.Component {
         } else { // en caso de que el usuario haya inicializado la variable se asigna el valor entregado por el usuario
           value = variable[3]
         }
-        this.props.addDataVariable(variable[1], value, this.props.memory.length + code_state.length + index, variable[2], this.current_file) // se agregan al array general de variables
+        this.props.addDataVariable(variable[1], value, this.props.memory.length + index, variable[2], this.current_file) // se agregan al array general de variables
         this.props.addInstruction('Variable ' + variable[1]) // se asigna el espacio de memoria a la variables
       })
       labels.forEach((label, index) => { // se recorre el arreglo de las etiquetas
-        this.props.addDataLabel(label[1], parseInt(label[2]) + this.props.memory.length, this.props.memory.length + code_state.length + index + variables.length, this.current_file) // se agrega la etiqueta al arreglo general de etiquetas
+        this.props.addDataLabel(label[1], parseInt(label[2]) + parseInt(this.props.OS_space), this.props.memory.length + index + variables.length, this.current_file) // se agrega la etiqueta al arreglo general de etiquetas
         this.props.addInstruction('Etiqueta ' + label[2]) // se asigna un espacio de memoria para la etiqueta
       })
       if (this.props.processList.length === 0) { // si es la primera vez que se carga un proceso carga un false a la variable memory_edit y desactiva la configuración de memoria del sistema
         this.props.toogleEditMemory();
       }
-      this.props.addNewProcess(this.props.processList.length, this.current_file)
+      this.props.addNewProcess(this.props.processList.length, this.current_file,init_line)
     }
     else {
       if (!code_sintax_state)
@@ -130,16 +131,16 @@ const mapStateToProps = (state) => {  // se convierten las variables de estado e
     memory: state.systemMemory.memory,
     memorySize: state.systemMemory.memory_size,
     processList: state.systemMemory.process_queue,
- 
+    OS_space: state.systemMemory.OS_occupied_memory
   }
 }
 
 const mapDispatchToProps = (dispatch) => { // se convierten las acciones en propiedades del componente
   return {
     addInstruction: (instruction) => dispatch(setAddInstruction(instruction)),
-    addDataVariable: (name, value, memoryPos, type,file) => dispatch(addVariable(name, value, memoryPos, type,file)),
-    addDataLabel: (name, line, memoryPos,file) => dispatch(addLabel(name, line, memoryPos,file)),
-    addNewProcess: (id, name) => dispatch(addProcess(id, name)),
+    addDataVariable: (name, value, memoryPos, type,file) => dispatch(addVariable(name,value,memoryPos,type,file)),
+    addDataLabel: (name, line, memoryPos,file) => dispatch(addLabel(name,line,memoryPos,file)),
+    addNewProcess: (id,name,line) => dispatch(addProcess(id,name,line)),
     toogleEditMemory: () => dispatch(toogleMemoryEdit())
   }
 }

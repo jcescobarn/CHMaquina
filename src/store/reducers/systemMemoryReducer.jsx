@@ -13,6 +13,7 @@ const initialState = { // objeto de estado inicial
     memory_edit: true,
     print_monitor_area: [],
     print_printer_area: [],
+    execution_mode: "normal"
 }
 
 
@@ -20,7 +21,6 @@ const systemMemoryReducer = (state = initialState, action) => { // dentro de est
 
     switch (action.type) {
         case 'SET_MEMORY_SIZE':
-            console.log(state.memory_size)
             return Object.assign({}, state, {
                 memory_size: action.payload
             })
@@ -125,6 +125,16 @@ const systemMemoryReducer = (state = initialState, action) => { // dentro de est
             return Object.assign({},state,{
                 current_instruction: action.payload
             })
+	case 'TOOGLE_EXECUTION_MODE':
+            if (state.execution_mode === 'normal') {
+                return Object.assign({}, state, {
+                    execution_mode: 'stepbystep'
+                })
+            } else {
+                return Object.assign({}, state, {
+                    execution_mode: 'normal'
+                })
+            }
         default:
             return state
     }

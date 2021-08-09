@@ -18,6 +18,7 @@ export const SET_VARIABLE = 'SET_VARIABLE'
 export const ADD_PRINTER_DATA = 'ADD_PRINTER_DATA'
 export const ADD_MONITOR_DATA = 'ADD_MONITOR_DATA'
 export const SET_CURRENT_INSTRUCTION = 'SET_CURRENT_INSTRUCTION'
+export const TOOGLE_EXECUTION_MODE = 'TOOGLE_EXECUTION_MODE'
 
 
 export function setMemorysize(number) { // se declara una función que devuelve una accion sobre el estado de la aplicacion
@@ -71,11 +72,12 @@ export function removeLabel(memoryPos) {
     return { type: REMOVE_LABEL, payload: memoryPos }
 }
 
-export function addProcess(id, name) {
+export function addProcess(id, name, line) {
     return {
         type: ADD_PROCESS, payload: {
-            id,
-            name
+            'id': id,
+            'name': name,
+            'line': line
         }
     }
 }
@@ -117,4 +119,8 @@ export function addMonitorData(data){
 
 export function setCurrentInstruction(data){
     return {type: SET_CURRENT_INSTRUCTION, payload:data}
+}
+
+export function toogleExecutionMode(){
+	return {type: TOOGLE_EXECUTION_MODE}
 }

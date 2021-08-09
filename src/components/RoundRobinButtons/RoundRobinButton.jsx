@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setAcumulador, setVariable, addPrinterData, addMonitorData, toggleSystemState, setCurrentInstruction } from '../../store/actions/systemMemoryActions'
+import { setRunProcess, setActualIndexProcess, setActualProcess, setProcessBurst } from '../../store/actions/RoundRobinActions'
 
 
-
-class ExecutionButtons extends React.Component {
+class RoundRobinButtons extends React.Component {
 
     constructor(props) { // se definen las variables necesarias para la ejecución del programa
         super(props)
@@ -19,17 +19,44 @@ class ExecutionButtons extends React.Component {
         this.variables = this.props.variables
         this.labels = this.props.labels
     }
+    //Algorithm functions
+    bloque_process(processId, row){
+                let time = this.props.actual_time
+                let process = this.props.process_queue[this.props.actualIndexProcess]
+                if(time < process.end_time && time >= process.start_time){
+                }
+                let rafagaTotal = process.burst_time
+                this.props.setBurst(process.process,process.end_time - time)        
+                //TODO Here 
 
-    stepByStep = () => {// Función que ejecuta una sola instrución en memoria 
-        this.props.toggleState()
-	let instruction = this.props.memory[this.pointer]
-        this.props.setCurrentInst(instruction)
-	this.execution(instruction)
-	this.pointer += 1
-        this.props.toggleState()
+            
+    }
+    resume_process(){
+            //TODO need find an develop this function
+    }
+    Validate_process_in_ejecution(){
+        let time = this.props.actual_time
+        let queue_length = this.props.process_queue.length
+        for(let indexProcess = this.props.actualIndexProcess; indexProcess < queue_length; indexProcess++){
+                let intern_process = this.props.process_queue[indexProcess]
+                if(intern_process.burst_time > this.props.consts.TIEMPOQUANTUM && 
+                intern_process.start_time + this.props.consts.TIEMPOQUANTUM === time){
+                        let indexBloquedProcess = this.bloque_process(indexProcess)
+                        this.resume_process(indexBloquedProcess)
+                }
+                if(intern_process.start_time <= time && intern_process.end_time > time){
+                        this.props.setExecutionProcess(intern_process.process)
+                        this.prosp.setActualProcessIndex(indexProcess)
+                }
+        }
+        
     }
 
-    run = () => {
+    runAlgorithm = () => {
+
+    }
+
+    runCode = () => {
 	this.props.toggleState()
 	while ((this.pointer < this.props.memory.length) && this.execution_flag) {
 		let instruction = this.props.memory[this.pointer]
@@ -379,7 +406,11 @@ const mapStateToProps = (state) => {
         OsMemory: state.systemMemory.OS_occupied_memory,
         labels: state.systemMemory.labels,
         memory: state.systemMemory.memory,
-	execution_mode: state.systemMemory.execution_mode
+	execution_mode: state.systemMemory.execution_mode,
+        actual_time: state.roundRobin.ActualTime,
+        process_queue: state.roundRobin.ReadyQueue,
+        actualIndexProcess: state.roundRobin.ActualIndexProcess,
+        consts: state.roundRobin.consts
     }
 }
 
@@ -391,8 +422,12 @@ const mapDispatchToProps = (dispatch) => {
         addDataMonitor: (data) => dispatch(addMonitorData(data)),
         addDataPrinter: (data) => dispatch(addPrinterData(data)),
         toggleState: () => dispatch(toggleSystemState()),
-        setCurrentInst: (data) => dispatch(setCurrentInstruction(data))
+        setCurrentInst: (data) => dispatch(setCurrentInstruction(data)),
+        setExecutionProcess: (process) => dispatch(setRunProcess(process)),
+        setActualProcessIndex: (processIndex) => dispatch(setActualIndexProcess(processIndex)),
+        setActualProcess: (process) => dipatch(setActualProcess(process)),
+        setBurst: (processIndex, new_burst) => dispatch(setProcessBurst(processIndex,new_burst))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExecutionButtons)
+export default connect(mapStateToProps, mapDispatchToProps)(RoundRobinButtons)

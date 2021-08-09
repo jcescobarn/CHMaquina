@@ -1,4 +1,4 @@
-import './App.css';
+import './Priority.css';
 import React from 'react'
 import OSMemorySpace from '../OSMemorySpace/OSMemorySpace.jsx'
 import MemorySpace from '../MemorySpace/MemorySpace.jsx'
@@ -15,7 +15,7 @@ import ModeButton from '../ModeButton/ModeButton';
 import { connect } from 'react-redux';
 
 // se crea el componente principal que dará estructura a los componentes para ser presentados en la interfaz
-class App extends React.Component {
+class Priority extends React.Component {
 
  render() {
 
@@ -72,4 +72,4 @@ const mapStateToProps = (state) => { // se convierten las variables de estado en
     }
 }
 
-export default connect(mapStateToProps,null)(App); // se conecta el componente con el store y se exporta
+export default connect(mapStateToProps,null)(Priority); // se conecta el componente con el store y se exporta
